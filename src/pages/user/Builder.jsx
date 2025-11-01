@@ -61,18 +61,24 @@ const Builder = () => {
   );
 
   return (
-    <div className="flex h-screen">
+    <div className="flex gap-2  h-screen">
       {/* Left Sidebar */}
-      <div className="w-3/7 border-r p-1 overflow-y-auto">
-        <h2 className="font-bold text-lg mb-4">Components</h2>
-        <input
-          type="text"
-          placeholder="Search components..."
-          className="w-full mb-3 border rounded px-2 py-1 text-sm"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        {filtered.map((c) => (
+      <div className="w-3/7 border  overflow-y-auto">
+        <div className="sticky top-0 p-1 z-100 bg-white">
+          <h2 className="font-bold text-lg mb-4">Components</h2>
+          <input
+            type="text"
+            placeholder="Search components..."
+            className="w-full mb-3  border-2 border-yellow-500 outline-none  rounded px-2 py-3 text-xl "
+            value={search}
+            onChange={(e) =>{
+                console.log('object')
+              setSearch(e.target.value)
+              }}
+          />
+        </div>
+        <div className="p-1">
+          {filtered.map((c) => (
           <div
             key={c.id}
             draggable
@@ -84,15 +90,16 @@ const Builder = () => {
             </div>
           </div>
         ))}
+        </div>
       </div>
 
       {/* Right Canvas */}
       <div
-        className="flex-1 bg-gray-50 overflow-y-auto"
+        className="flex-1 border bg-gray-50 overflow-y-auto"
         onDragOver={handleDragOver}
         onDrop={handleDrop}
       >
-        <h2 className="font-bold pt-2 pl-2 text-lg mb-4">Live Preview</h2>
+        <h2 className="sticky top-0 z-20 bg-white font-bold pt-2 pl-2 text-lg mb-4">Live Preview</h2>
 
         {canvas.length === 0 && (
           <div className="text-gray-400 text-center mt-20">
@@ -135,6 +142,7 @@ const Builder = () => {
           );
         })}
       </div>
+
     </div>
   );
 };
