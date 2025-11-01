@@ -145,13 +145,8 @@ export const Priching1 = () => (
             Get Started
         </button>
     </div>
-</div>
-   
+</div> 
 )
-
-
-
-
 
 export const prichingComponents = [
    {id : "priching-1", name: "Priching 1", component: Priching1 },
