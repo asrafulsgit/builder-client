@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
+import { apiRequiest } from '../../utils/baseApi';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 
 const SignupForm = () => {
+  const navigate = useNavigate();
     const initValues = {
         name : "",
         email : "",
@@ -13,7 +17,14 @@ const SignupForm = () => {
     }
 
     const handleSubmit = async(e)=>{
-        e.preventDeafult();
+        e.preventDefault();
+         try {
+                  await apiRequiest('POST','/user/signup',userData);
+                   toast.success("User created successfully");
+                   navigate('/login');
+                  } catch (error) {
+                    toast.error(error?.response?.data?.message);
+                  }
     }
     
   return (

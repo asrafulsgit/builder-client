@@ -1,6 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { apiRequiest } from '../../utils/baseApi';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
+import { Context } from '../../controllers/context/AuthContext';
 
 const LoginForm = () => {
+  const {setUser} = useContext(Context)
+  const navigate = useNavigate();
    const initValues = {
           email : "",
           password : ""
@@ -12,7 +18,15 @@ const LoginForm = () => {
       }
   
       const handleSubmit = async(e)=>{
-          e.preventDeafult();
+          e.preventDefault();
+          try {
+            const {data} = await apiRequiest('POST','/auth/login',userData);
+            setUser(data);
+            toast.success("Login Success");
+            navigate('/');
+          } catch (error) {
+            toast.error(error?.response?.data?.message);
+          }
       }
       
     return (
