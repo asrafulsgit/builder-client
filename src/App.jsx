@@ -1,11 +1,11 @@
-import Builder from "./pages/Builder"
+import { Outlet } from "react-router"
 
 
 function App() {
 
   return (
      <>
-       <Builder />
+       <Outlet />
      </>
   )
 }
