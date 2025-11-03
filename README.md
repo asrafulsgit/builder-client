@@ -1,16 +1,47 @@
-# React + Vite
+# 🎓 BuilderX Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Project Name:** BuilderX  
 
-Currently, two official plugins are available:
+  
+**Live URL:** _[https://builder-x-client.netlify.app]_
+**Server source code:** _[https://github.com/asrafulsgit/builder-server]_
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🌟 Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+BuilderX is a full-stack SaaS prototype that empowers users to design and build custom web pages visually — without writing code. It provides a drag-and-drop interface where users can add, edit, and organize prebuilt UI components (like Navbars, Hero sections, and Cards) to create their own landing pages or marketplaces.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Key Features
+
+### User Authentication
+### Visual Builder Interface
+### Component Library
+### Drag & Drop + Manual Controls
+### Template Saving
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the Repository
+```bash
+git clone 
+cd /builder-client
+Install dependencies
+
+bash
+npm install
+```
+```env
+Configure environment variables
+Create .env with:
+
+VITE_BACKEND_URL = ''
+```
+
+```bash
+npm run dev
+```
