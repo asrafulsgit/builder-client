@@ -59,12 +59,11 @@ const Builder = () => {
   const filtered = library.filter((c) =>
     c.name.toLowerCase().includes(search.toLowerCase())
   );
-
   return (
     <div className="flex gap-2  h-screen">
       {/* Left Sidebar */}
       <div className="w-3/7 border  overflow-y-auto">
-        <div className="sticky top-0 p-1 z-100 bg-white">
+        <div className="sticky top-0 p-1 z-10 bg-white">
           <h2 className="font-bold text-lg mb-4">Components</h2>
           <input
             type="text"

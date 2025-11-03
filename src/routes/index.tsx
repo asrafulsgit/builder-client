@@ -5,6 +5,7 @@ import Signup from "../pages/authentication/Signup";
 import Login from "../pages/authentication/Login";
 import Auth_middleware from "../middleware/Auth_middleware";
 import UnAuth_middleware from "../middleware/UnAuth_middleware";
+import Dashboard from "../pages/user/Dashboard";
 
 
 const routes = createBrowserRouter([
@@ -15,6 +16,9 @@ const routes = createBrowserRouter([
       {
         index: true,
         Component: Builder,
+      },{
+        path : '/dashboard',
+        Component : Dashboard
       }
     ],
   },
