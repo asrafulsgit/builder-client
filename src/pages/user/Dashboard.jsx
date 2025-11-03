@@ -7,19 +7,29 @@ import { Link } from 'react-router';
 const Dashboard = () => {
   const {user} = useContext(Context);
   const [projects,setProjects]=useState([]);
-
-  const getMyProjects =async()=>{
+  const [isLoading, setIsLoading] = useState(true);
+  const getMyProjects = async()=>{
     try {
       const {data} = await apiRequest('GET','/template/my-projects');
       setProjects(data.templates || []);
     } catch (error) {
       toast.error(error?.response?.data?.message || "Failed to fetch projects");
-    }
+    }finally {
+    setIsLoading(false);
+  }
   }
 
   useEffect(()=>{
     getMyProjects();
   },[]);
+
+  if (isLoading) {
+  return (
+    <div className="flex justify-center items-center min-h-screen">
+      <h1 className="text-yellow-500 text-xl font-semibold">Loading...</h1>
+    </div>
+  );
+}
 
   return (
     <div className='px-10 py-5'>
