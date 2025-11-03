@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { apiRequiest } from '../../utils/baseApi';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -52,6 +52,8 @@ const SignupForm = () => {
 </label>
     <button type='submit' className='bg-yellow-500 cursor-pointer rounded-xl px-5 
     py-2 w-full mt-3'>Sign up</button>
+    <span>Already have an Account <Link to={'/login'}
+      className='text-yellow-500 font-semibold'>Login</Link> </span>
     </form>
   )
 }

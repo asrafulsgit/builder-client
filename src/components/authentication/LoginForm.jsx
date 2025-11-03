@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { apiRequiest } from '../../utils/baseApi';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { Context } from '../../controllers/context/AuthContext';
 
 const LoginForm = () => {
@@ -48,6 +48,8 @@ const LoginForm = () => {
   </label>
       <button type='submit' className='bg-yellow-500 cursor-pointer rounded-xl px-5 
       py-2 w-full mt-3'>Login</button>
+      <span>Don't have Account <Link to={'/signup'}
+      className='text-yellow-500 font-semibold'>Signup</Link> </span>
       </form>
     )
 }
