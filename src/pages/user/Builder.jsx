@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { library } from "../../components/library/Library";
 import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
+import { apiRequiest } from "../../utils/baseApi";
 
 const Builder = () => {
   const [canvas, setCanvas] = useState([]);
+  const [projectName, setProjectName] = useState("");
   const [dragItem, setDragItem] = useState(null);
   const [search, setSearch] = useState("");
 
@@ -17,7 +20,7 @@ const Builder = () => {
     setCanvas((prev) => {
       const index = prev.findIndex((c) => c.id === id);
       if (index === -1) return prev;
-
+ 
       const newIndex = direction === "up" ? index - 1 : index + 1;
       if (newIndex < 0 || newIndex >= prev.length) return prev;
 
@@ -26,11 +29,6 @@ const Builder = () => {
       newArr.splice(newIndex, 0, moved);
       return newArr;
     });
-  };
-
-  // Drag from left library
-  const handleDragStart = (c) => {
-    setDragItem(c);
   };
 
   // Drop into canvas
@@ -44,21 +42,35 @@ const Builder = () => {
 
     setCanvas((prev) => [
       ...prev,
-      { id: uuidv4(), componentId: dragItem.id, order: prev.length + 1 },
+      { id: uuidv4(), componentId: dragItem.id},
     ]);
-
     setDragItem(null);
-  };
-
-  // Allow drop
-  const handleDragOver = (e) => {
-    e.preventDefault();
   };
 
   // Filter components by search
   const filtered = library.filter((c) =>
     c.name.toLowerCase().includes(search.toLowerCase())
   );
+
+  // save template 
+  const handleSaveTemplate = async()=>{
+      if(!projectName.trim()) return toast.error("Please, Enter Your project name.");
+      if(canvas.length === 0) return toast.error("There is no content to save.");
+      console.log(canvas)
+      const templateData = {
+        name : projectName,
+        components : canvas
+      }
+
+      try {
+        await apiRequiest('POST','/template/create',templateData);
+        toast.success('Your template is saved');
+      } catch (error) {
+        toast.error(error?.respone?.data?.message);
+      }
+      
+  }
+
   return (
     <div className="flex gap-2  h-screen">
       {/* Left Sidebar */}
@@ -81,7 +93,7 @@ const Builder = () => {
           <div
             key={c.id}
             draggable
-            onDragStart={() => handleDragStart(c)}
+            onDragStart={() => setDragItem(c)}
             className="border mb-2 cursor-pointer hover:bg-gray-100 rounded"
           >
             <div className="pointer-events-none">
@@ -95,10 +107,18 @@ const Builder = () => {
       {/* Right Canvas */}
       <div
         className="flex-1 border bg-gray-50 overflow-y-auto"
-        onDragOver={handleDragOver}
+        onDragOver={(e)=> e.preventDefault()}
         onDrop={handleDrop}
       >
-        <h2 className="sticky top-0 z-20 bg-white font-bold pt-2 pl-2 text-lg mb-4">Live Preview</h2>
+        <div className="sticky top-0 z-20 bg-white flex justify-between items-center p-3 ">
+          <h2 className="font-bold text-lg mb-4">Live Preview</h2>
+          <div className="space-x-4">
+            <input type="text" placeholder="Enter project name" 
+            className="px-2 py-1 border-2 border-yellow-500 rounded-lg focus:outline-none" onChange={(e)=>setProjectName(e.target.value)}/>
+            <button disabled={canvas.length === 0} onClick={handleSaveTemplate} 
+            className={`bg-yellow-500 px-3 py-1.5 rounded-lg ${canvas.length === 0 ? "cursor-no-drop" : "cursor-pointer"}`}>Save Project</button>
+          </div>
+        </div>
 
         {canvas.length === 0 && (
           <div className="text-gray-400 text-center mt-20">
@@ -141,7 +161,6 @@ const Builder = () => {
           );
         })}
       </div>
-
     </div>
   );
 };
