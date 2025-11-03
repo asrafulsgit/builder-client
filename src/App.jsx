@@ -1,7 +1,7 @@
 import { useContext } from "react"
-import CommonLayout from "./components/layout/commonLayout"
 import { Context } from "./controllers/context/AuthContext"
 import Loader from "./components/additionals/Loader";
+import CommonLayout from "./components/layout/commonLayout";
 
 
 
