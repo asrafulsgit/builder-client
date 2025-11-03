@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
 import { apiRequest } from '../../utils/baseApi';
 import { library } from '../../components/library/Library';
+import Loader from '../../components/additionals/Loader';
 
 const Preview = () => {
       const {id} = useParams();
@@ -27,9 +28,7 @@ const Preview = () => {
       },[id]);
 
   if(isLoading) {
-    return <div className='flex justify-center items-center w-full min-h-screen'>
-        <h1 className='text-yellow-500 font-semibold text-xl'>Loading...</h1>
-    </div>
+    return <Loader />
   };
 
   return (

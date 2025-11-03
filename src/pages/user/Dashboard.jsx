@@ -3,6 +3,7 @@ import { Context } from '../../controllers/context/AuthContext'
 import { apiRequest } from '../../utils/baseApi';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router';
+import Loader from '../../components/additionals/Loader';
 
 const Dashboard = () => {
   const {user} = useContext(Context);
@@ -24,11 +25,7 @@ const Dashboard = () => {
   },[]);
 
   if (isLoading) {
-  return (
-    <div className="flex justify-center items-center min-h-screen">
-      <h1 className="text-yellow-500 text-xl font-semibold">Loading...</h1>
-    </div>
-  );
+  return <Loader />
 }
 
   return (
