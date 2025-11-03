@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { Context } from "./controllers/context/AuthContext"
 import Loader from "./components/additionals/Loader";
-import CommonLayout from "./components/layout/commonLayout";
+import Common_Layout from "./components/layout/Common_Layout";
 
 
 
@@ -12,7 +12,7 @@ function App() {
   }
   return (
   <div className="mx-auto">
-       <CommonLayout />
+       <Common_Layout />
      </div>
   )
 }
