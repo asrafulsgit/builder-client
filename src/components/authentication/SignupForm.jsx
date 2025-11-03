@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { apiRequiest } from '../../utils/baseApi';
+import { apiRequest } from '../../utils/baseApi';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router';
 
@@ -19,7 +19,7 @@ const SignupForm = () => {
     const handleSubmit = async(e)=>{
         e.preventDefault();
          try {
-                  await apiRequiest('POST','/user/signup',userData);
+                  await apiRequest('POST','/user/signup',userData);
                    toast.success("User created successfully");
                    navigate('/login');
                   } catch (error) {

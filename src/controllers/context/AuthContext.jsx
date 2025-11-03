@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { apiRequiest } from "../../utils/baseApi"; 
+import { apiRequest } from "../../utils/baseApi"; 
 
 
 
@@ -14,7 +14,7 @@ const AuthContext = ({children}) => {
 
     const userObserver = async()=>{
       try {
-         const {data} = await apiRequiest('GET','/user/observer');
+         const {data} = await apiRequest('GET','/user/observer');
          setUser(data);
          setIsLoading(false);
       } catch (error) {

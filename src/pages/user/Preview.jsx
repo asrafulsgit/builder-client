@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
-import { apiRequiest } from '../../utils/baseApi';
+import { apiRequest } from '../../utils/baseApi';
 import { library } from '../../components/library/Library';
 
 const Preview = () => {
@@ -12,10 +12,10 @@ const Preview = () => {
 
       const getProject =async()=>{
         try {
-          const {data} = await apiRequiest('GET',`/template/project/${id}`);
+          const {data} = await apiRequest('GET',`/template/project/${id}`);
           setProject(data || null);
         } catch (error) {
-          toast.error(error?.response?.data?.message);
+          toast.error(error?.response?.data?.message || "Project not found");
           navigate('/404')
         }finally{
            setIsLoading(false);
@@ -24,15 +24,19 @@ const Preview = () => {
 
       useEffect(()=>{
         getProject();
-      },[]);
+      },[id]);
 
-  if(isLoading) return;
+  if(isLoading) {
+    return <div className='flex justify-center items-center w-full min-h-screen'>
+        <h1 className='text-yellow-500 font-semibold text-xl'>Loading...</h1>
+    </div>
+  };
 
   return (
     <div className='max-w-[1800px] mx-auto'>
         { project?.components.map((c)=> {
            const Com = library.find((com)=> com.id === c.componentId);
-            return <Com.component />
+            return Com && <Com.component key={Com.id} />
         })}
     </div>
   )

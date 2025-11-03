@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import {NavLink, useNavigate } from 'react-router'
-import { apiRequiest } from '../../utils/baseApi'
+import { apiRequest } from '../../utils/baseApi'
 import { toast } from 'react-toastify'
 import { Context } from '../../controllers/context/AuthContext'
 
@@ -20,7 +20,7 @@ const handleLogout =async()=>{
   setIsLoading(true);
   try {
 
-                    await apiRequiest('GET','/auth/logout');
+                    await apiRequest('GET','/auth/logout');
                     setUser(null);
                     toast.success("User logout successfully");
                     navigate('/login');

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { apiRequiest } from '../../utils/baseApi';
+import { apiRequest } from '../../utils/baseApi';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router';
 import { Context } from '../../controllers/context/AuthContext';
@@ -20,7 +20,7 @@ const LoginForm = () => {
       const handleSubmit = async(e)=>{
           e.preventDefault();
           try {
-            const {data} = await apiRequiest('POST','/auth/login',userData);
+            const {data} = await apiRequest('POST','/auth/login',userData);
             setUser(data);
             toast.success("Login Success");
             navigate('/');

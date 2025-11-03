@@ -1,7 +1,7 @@
 import axios from "axios";
 import { envs } from "../config/env.config";
 
-export const  apiRequiest = async(method,route,data=null,headers={}) =>{
+export const  apiRequest = async(method,route,data=null,headers={}) =>{
      try {
           const res = await axios({
                method,

@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { library } from "../../components/library/Library";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
-import { apiRequiest } from "../../utils/baseApi";
+import { apiRequest } from "../../utils/baseApi";
 
 const Builder = () => {
   const [canvas, setCanvas] = useState([]);
@@ -11,12 +11,12 @@ const Builder = () => {
   const [search, setSearch] = useState("");
 
   // Delete component
-  const deleteComponent = (id) => {
+  const deleteComponent = useCallback((id) => {
     setCanvas((prev) => prev.filter((c) => c.id !== id));
-  };
+  },[]);
 
   // Move component manually
-  const moveComponent = (id, direction) => {
+  const moveComponent = useCallback((id, direction) => {
     setCanvas((prev) => {
       const index = prev.findIndex((c) => c.id === id);
       if (index === -1) return prev;
@@ -29,7 +29,7 @@ const Builder = () => {
       newArr.splice(newIndex, 0, moved);
       return newArr;
     });
-  };
+  },[]);
 
   // Drop into canvas
   const handleDrop = (e) => {
@@ -48,9 +48,9 @@ const Builder = () => {
   };
 
   // Filter components by search
-  const filtered = library.filter((c) =>
+  const filtered =useMemo(()=>library.filter((c) =>
     c.name.toLowerCase().includes(search.toLowerCase())
-  );
+  ),[search]) 
 
   // save template 
   const handleSaveTemplate = async()=>{
@@ -63,11 +63,11 @@ const Builder = () => {
       }
 
       try {
-        await apiRequiest('POST','/template/create',templateData);
+        await apiRequest('POST','/template/create',templateData);
         setCanvas([])
         toast.success('Your template is saved');
       } catch (error) {
-        toast.error(error?.respone?.data?.message);
+        toast.error(error?.respone?.data?.message || "Failed to save project");
       }
       
   }
@@ -84,7 +84,6 @@ const Builder = () => {
             className="w-full mb-3  border-2 border-yellow-500 outline-none  rounded px-2 py-3 text-xl "
             value={search}
             onChange={(e) =>{
-                console.log('object')
               setSearch(e.target.value)
               }}
           />

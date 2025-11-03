@@ -1,14 +1,15 @@
 import { createBrowserRouter } from "react-router";
 import App from "../App";
-import Builder from "../pages/user/Builder";
 import Signup from "../pages/authentication/Signup";
 import Login from "../pages/authentication/Login";
 import Auth_middleware from "../middleware/Auth_middleware";
 import UnAuth_middleware from "../middleware/UnAuth_middleware";
-import Dashboard from "../pages/user/Dashboard";
-import Preview from "../pages/user/Preview";
-import NotFound from "../components/additionals/NotFound";
+import NotFound from "../components/additionals/NotFound"; 
+import { lazy } from "react";
 
+const Dashboard = lazy(()=> import("../pages/user/Dashboard"));
+const Builder = lazy(()=> import("../pages/user/Builder"));
+const Preview = lazy(()=> import("../pages/user/Preview"));
 
 const routes = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const routes = createBrowserRouter([
   {
       path : '/project/:id',
       element : <Auth_middleware> <Preview /></Auth_middleware>
-      },
+  },
   {
     element: <UnAuth_middleware> <Login/> </UnAuth_middleware> ,
     path: "/login",

@@ -1,18 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../../controllers/context/AuthContext'
-import { apiRequiest } from '../../utils/baseApi';
+import { apiRequest } from '../../utils/baseApi';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router';
 
 const Dashboard = () => {
   const {user} = useContext(Context);
   const [projects,setProjects]=useState([]);
+
   const getMyProjects =async()=>{
     try {
-      const {data} = await apiRequiest('GET','/template/my-projects');
+      const {data} = await apiRequest('GET','/template/my-projects');
       setProjects(data.templates || []);
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Failed to fetch projects");
     }
   }
 
@@ -27,7 +28,9 @@ const Dashboard = () => {
         <div className='mt-10'>
           <h2 className='font-bold text-xl'>My projects</h2>
           <div className='mt-3 flex gap-5'>
-             {projects.map((project)=>(
+             {
+             projects.length === 0 ? <h1>You have no project</h1> :
+             projects.map((project)=>(
               <div className='border border-neutral-300 rounded-xl 
               p-3 flex flex-col gap-2' key={project?._id}>
                 <h3 className='text-lg font-bold'>{project?.name}</h3>
@@ -36,7 +39,7 @@ const Dashboard = () => {
                   See 
                 </button></Link>
               </div>
-             )) }
+             ))}
           </div>
         </div>
     </div>
