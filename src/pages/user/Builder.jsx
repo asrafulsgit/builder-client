@@ -64,7 +64,8 @@ const Builder = () => {
 
       try {
         await apiRequest('POST','/template/create',templateData);
-        setCanvas([])
+        setCanvas([]);
+        setProjectName("");
         toast.success('Your template is saved');
       } catch (error) {
         toast.error(error?.respone?.data?.message || "Failed to save project");
