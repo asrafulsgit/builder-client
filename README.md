@@ -14,13 +14,24 @@ BuilderX is a full-stack SaaS prototype that empowers users to design and build 
 
 ---
 
-## 🚀 Key Features
+### 🚀 Key Features
 
-### User Authentication
-### Visual Builder Interface
-### Component Library
-### Drag & Drop + Manual Controls
-### Template Saving
+## 1. User Authentication
+## 2. Visual Builder Interface
+## 3. Component Library
+## 4. Drag & Drop + Manual Controls
+## 5. Template Saving
+
+### 🧰 Tech Stack
+
+## Frontend:
+- React.js
+- Tailwind CSS
+
+## Backend:
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
 
 ---
 
