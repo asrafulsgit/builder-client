@@ -1,6 +1,6 @@
 
 export const Testimonial1 = () => (
-<div className="text-center py-10">
+<div className="text-center py-10 mx-auto">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-800">What Our Students Say</h1>
             <p className="text-sm md:text-base text-gray-500 mt-4">Join thousand of successful students who transformed their careers with us</p>
             <div className="flex flex-wrap justify-center gap-5 mt-16 text-left">
@@ -103,7 +103,7 @@ export const Testimonial1 = () => (
 
 export const Testimonial2 = () => (
     
-<div className="flex md:flex-row py-10 flex-col gap-5">
+<div className="flex justify-center md:flex-row py-10 flex-col gap-5 mx-auto">
             <div className="w-80 flex flex-col items-center border border-gray-300 p-10 rounded-lg">
                 <img className="h-20 w-20 rounded-full" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200" alt="userImage1" />
                 <h2 className="text-lg text-gray-900 font-medium mt-2">Donald Jackman</h2>

@@ -1,7 +1,7 @@
 
 export const Contact1 = () => (
 
-  <div className="flex flex-col items-center py-10 text-center">
+  <div className="mx-auto flex flex-col items-center py-10 text-center">
             <h3 className="text-lg font-medium text-blue-600 mb-2">Contact Us</h3>
             <h1 className="text-3xl md:text-4xl font-semibold mb-4 text-gray-800">Meet Our People</h1>
             <p className="w-3/5 mb-14 text-gray-500 text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
@@ -82,7 +82,7 @@ export const Contact1 = () => (
 )
 
 export const Contact2 = () => (
-    <div className="py-10">
+    <div className="mx-auto py-10">
     <h1 className="text-3xl  font-medium text-slate-800 text-center">Meet Our Team</h1>
             <p className="text-slate-500 text-center">The people behind the product, passionate about what they do.</p>
             <div className="flex flex-wrap items-center justify-center gap-6 mt-12">

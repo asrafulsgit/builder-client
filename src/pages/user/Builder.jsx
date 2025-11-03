@@ -56,7 +56,7 @@ const Builder = () => {
   const handleSaveTemplate = async()=>{
       if(!projectName.trim()) return toast.error("Please, Enter Your project name.");
       if(canvas.length === 0) return toast.error("There is no content to save.");
-      console.log(canvas)
+  
       const templateData = {
         name : projectName,
         components : canvas
@@ -64,6 +64,7 @@ const Builder = () => {
 
       try {
         await apiRequiest('POST','/template/create',templateData);
+        setCanvas([])
         toast.success('Your template is saved');
       } catch (error) {
         toast.error(error?.respone?.data?.message);
@@ -75,7 +76,7 @@ const Builder = () => {
     <div className="flex gap-2  h-screen">
       {/* Left Sidebar */}
       <div className="w-3/7 border  overflow-y-auto">
-        <div className="sticky top-0 p-1 z-10 bg-white">
+        <div className="sticky top-0 p-1 z-20 bg-white">
           <h2 className="font-bold text-lg mb-4">Components</h2>
           <input
             type="text"

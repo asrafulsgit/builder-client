@@ -54,7 +54,7 @@ export const Navbar1 = () => (
 )
 
 export const Navbar2 = () => (
-   <header className="bg-white dark:bg-gray-900">
+   <header className="mx-auto bg-white dark:bg-gray-900">
          <div className="mx-auto px-4">
             <div className="flex h-16 items-center justify-between">
                <div className="md:flex md:items-center md:gap-12">
@@ -116,7 +116,7 @@ export const Navbar2 = () => (
    </header>
 )
 export const Navbar3 = () => (
-  <header className="bg-white">
+  <header className=" mx-auto bg-white">
     <div className="mx-auto  px-4">
       <div className="flex h-16 items-center justify-between">
         <div className="flex-1 md:flex md:items-center md:gap-12">

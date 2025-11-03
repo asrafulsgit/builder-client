@@ -1,7 +1,7 @@
 
 export const Hero1 = () => (
 
-   <section className="bg-[#FCF8F1] bg-opacity-30 py-10 sm:py-16">
+   <section className="mx-auto bg-[#FCF8F1] bg-opacity-30 py-10 sm:py-16">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
                 <div>
@@ -28,7 +28,7 @@ export const Hero1 = () => (
 )
 
 export const Hero2 = () => (
-    <div className="py-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div className="  py-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto text-center">
                 <h1 className="px-6 text-lg text-gray-600 font-inter">Smart email campaign builder, made for Developers</h1>
                 <p className="mt-5 text-4xl font-bold leading-tight text-gray-900 sm:leading-tight sm:text-5xl lg:text-6xl lg:leading-tight font-pj">

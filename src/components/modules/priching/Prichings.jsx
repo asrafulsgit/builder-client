@@ -1,6 +1,6 @@
 
 export const Priching1 = () => (
-<div className="flex flex-wrap items-center justify-center gap-4 py-10">
+<div className="flex mx-auto flex-wrap items-center justify-center gap-4 py-10">
     <div className="w-72 bg-white text-center text-gray-800/80 border border-gray-200 p-6 pb-16 rounded-lg">
         <p className="font-semibold">Basic</p>
         <h1 className="text-3xl font-semibold">$29<span className="text-gray-500 text-sm font-normal">/month</span></h1>

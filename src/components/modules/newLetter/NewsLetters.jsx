@@ -1,7 +1,7 @@
 
 export const NewsLetter1 = () => (
 
- <div className="w-full bg-slate-900 px-2 text-center text-white py-20 flex flex-col 
+ <div className="mx-auto w-full bg-slate-900 px-2 text-center text-white py-20 flex flex-col 
  items-center justify-center">
                 <p className="text-indigo-500 font-medium">Get updated</p>
                 <h1 className="max-w-lg font-semibold text-4xl/[44px] mt-2">Subscribe to our newsletter & get the latest news</h1>
@@ -16,7 +16,7 @@ export const NewsLetter1 = () => (
 
 export const NewsLetter2 = () => (
 
-    <div className="flex md:flex-row flex-col border border-gray-500/30 
+    <div className="mx-auto flex md:flex-row flex-col border border-gray-500/30 
     rounded-lg items-start md:items-center justify-between gap-5 text-sm max-w-5xl bg-white p-8">
             <div className="max-w-md w-full">
                 <h1 className="text-3xl font-semibold text-gray-700">Subscribe to our newsletter</h1>
